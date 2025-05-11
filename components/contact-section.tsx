@@ -86,14 +86,14 @@ export function ContactSection() {
   };
 
   return (
-    <section className="relative py-32 overflow-hidden bg-gradient-to-b from-background to-background/50">
+    <section className="relative py-32  overflow-hidden bg-gradient-to-b from-background to-background/50">
       {/* Background Effects */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 mix-blend-normal" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_800px_at_50%_50%,rgba(0,0,0,0),rgba(0,0,0,0.8))]" />
       </div>
 
-      <div className="container relative mx-auto px-4" id="contact">
+      <div className="container relative   mx-auto px-4" id="contact">
         <div className="max-w-4xl mx-auto">
           {/* Section Title */}
           <motion.div

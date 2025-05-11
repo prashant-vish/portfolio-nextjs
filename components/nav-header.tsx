@@ -103,7 +103,7 @@ export function NavHeader() {
         >
           <div className="h-16 flex items-center justify-between px-6">
             <Link
-              href="/portfolio"
+              href="/"
               className="text-white hover:text-white/80 transition-colors flex items-center gap-2 shrink-0 relative"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => {
@@ -125,7 +125,7 @@ export function NavHeader() {
                         isHovered && letterHovered === -1 ? "animate-pulse" : ""
                       )}
                       style={{
-                        opacity: Math.max(0, 1 - scrollProgress * 2),
+                        opacity: 1, // Always fully visible
                         textShadow:
                           letterHovered === index
                             ? "0 0 20px rgba(255, 255, 0, 0.5)"
@@ -143,7 +143,7 @@ export function NavHeader() {
                   <div
                     className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent animate-pulse"
                     style={{
-                      opacity: Math.max(0, 1 - scrollProgress * 2),
+                      opacity: 1, // Always fully visible
                     }}
                   />
                 )}
