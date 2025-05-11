@@ -96,7 +96,7 @@ const techStack = [
   {
     name: "Ci/Cd",
     icon: "/portfolio/tech/cicd.svg",
-    category: "Automation",
+    category: "Devops",
   },
   {
     name: "Linux",
