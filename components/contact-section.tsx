@@ -5,75 +5,73 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Github, Linkedin, Mail, Send } from "lucide-react";
 import Link from "next/link";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { toast } from "sonner";
+import emailjs from "@emailjs/browser";
 
 export function ContactSection() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [isSending, setIsSending] = useState(false);
+  const [isEmailJSLoaded, setIsEmailJSLoaded] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  // Initialize EmailJS once the component is mounted
+  useEffect(() => {
+    const initEmailJS = async () => {
+      try {
+        await emailjs.init(process.env.NEXT_PUBLIC_PUBLIC_KEY ?? "");
+        setIsEmailJSLoaded(true);
+      } catch (error) {
+        console.error("Error initializing EmailJS:", error);
+        toast.error("Failed to initialize email service");
+      }
+    };
+
+    initEmailJS();
+  }, []);
+
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
+
+    if (!isEmailJSLoaded) {
+      toast.error("Email service not ready. Please try again.");
+      return;
+    }
+
     setIsSending(true);
 
     try {
-      const webhookUrl = process.env.NEXT_PUBLIC_DISCORD_WEBHOOK_URL;
-      if (!webhookUrl) {
-        throw new Error("Discord webhook URL not configured");
-      }
+      // Prepare parameters for the email template
+      const templateParams = {
+        from_name: email,
+        to_name: "Prashant",
+        from_email: email,
+        message: message,
+        subject: "New Portfolio Contact Message",
+        reply_to: email,
+        sent_at: new Date().toLocaleString(),
+      };
 
-      const currentTime = new Date().toISOString();
+      // Send email using EmailJS
+      const response = await emailjs.send(
+        process.env.NEXT_PUBLIC_SERVICE_ID ?? "",
+        process.env.NEXT_PUBLIC_TEMPLATE_ID ?? "",
+        templateParams
+      );
 
-      const response = await fetch(webhookUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          embeds: [
-            {
-              title: "✨ New Portfolio Contact Message",
-              color: 0x6366f1,
-              description: message,
-              author: {
-                name: email,
-                icon_url: "https://cdn.discordapp.com/embed/avatars/0.png",
-              },
-              fields: [
-                {
-                  name: "📧 Email",
-                  value: email,
-                  inline: true,
-                },
-                {
-                  name: "⏰ Sent At",
-                  value: new Date().toLocaleString(),
-                  inline: true,
-                },
-              ],
-              footer: {
-                text: "Portfolio Contact Form",
-                icon_url: "https://github.com/samrathreddy.png",
-              },
-              timestamp: currentTime,
-            },
-          ],
-        }),
-      });
+      if (response.status === 200) {
+        // Clear form after successful submission
+        setEmail("");
+        setMessage("");
 
-      if (!response.ok) {
+        toast.success("Message sent successfully!", {
+          description: "Thank you for reaching out. I'll get back to you soon!",
+          duration: 5000,
+        });
+      } else {
         throw new Error("Failed to send message");
       }
-
-      setEmail("");
-      setMessage("");
-
-      toast.success("Message sent successfully!", {
-        description: "Thank you for reaching out. I'll get back to you soon!",
-        duration: 5000,
-      });
     } catch (error) {
       console.error("Error sending message:", error);
       toast.error("Failed to send message", {
@@ -86,14 +84,14 @@ export function ContactSection() {
   };
 
   return (
-    <section className="relative py-32  overflow-hidden bg-gradient-to-b from-background to-background/50">
+    <section className="relative py-32 overflow-hidden bg-gradient-to-b from-background to-background/50">
       {/* Background Effects */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 mix-blend-normal" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_800px_at_50%_50%,rgba(0,0,0,0),rgba(0,0,0,0.8))]" />
       </div>
 
-      <div className="container relative   mx-auto px-4" id="contact">
+      <div className="container relative mx-auto px-4" id="contact">
         <div className="max-w-4xl mx-auto">
           {/* Section Title */}
           <motion.div
