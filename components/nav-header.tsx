@@ -151,34 +151,34 @@ export function NavHeader() {
             </Link>
 
             <div className="flex-1 flex items-center justify-center">
-              <div className="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+              <div className="hidden  lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
                 <Link
                   href="#about"
-                  className="text-[#989898] hover:text-white transition-colors text-sm"
+                  className="text-[#989898]  hover:text-white transition-colors text-md"
                 >
                   About
                 </Link>
                 <Link
                   href="#techstack"
-                  className="text-[#989898] hover:text-white transition-colors text-sm"
+                  className="text-[#989898] hover:text-white transition-colors text-md"
                 >
                   Skills
                 </Link>
                 <Link
                   href="#experience"
-                  className="text-[#989898] hover:text-white transition-colors text-sm"
+                  className="text-[#989898] hover:text-white transition-colors text-md"
                 >
                   Experience
                 </Link>
                 <Link
                   href="#projects"
-                  className="text-[#989898] hover:text-white transition-colors text-sm"
+                  className="text-[#989898] hover:text-white transition-colors text-md"
                 >
                   Projects
                 </Link>
                 <Link
                   href="#contact"
-                  className="text-[#989898] hover:text-white transition-colors text-sm"
+                  className="text-[#989898] hover:text-white transition-colors text-md"
                 >
                   Contact
                 </Link>

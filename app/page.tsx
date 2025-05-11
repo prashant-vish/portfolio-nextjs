@@ -6,6 +6,7 @@ import { ProjectsSection } from "@/components/projects-section";
 import { ContactSection } from "@/components/contact-section";
 import { TechStackSection } from "@/components/tech-stack-section";
 import { ExperienceSection } from "@/components/experience-section";
+import { FooterSection } from "@/components/footer";
 
 export default function PortfolioPage() {
   return (
@@ -18,6 +19,7 @@ export default function PortfolioPage() {
       <ExperienceSection />
       <ProjectsSection />
       <ContactSection />
+      <FooterSection />
     </div>
   );
 }
