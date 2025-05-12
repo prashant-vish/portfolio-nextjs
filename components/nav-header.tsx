@@ -231,7 +231,7 @@ export function NavHeader() {
               <div className="w-px h-6 bg-white/10 mx-2" />
 
               <Link
-                href="https://drive.google.com/file/d/13G_tasc6Hg5CMOTQj_CN0NFFKZUocl_O/view?usp=sharing"
+                href="https://drive.google.com/file/d/1rXxSLUA6p7MXOI7t3I26iLBJObGDkof3/view?usp=sharing"
                 target="_blank"
               >
                 <Button className="bg-primary hover:bg-primary/90 text-black transition-all relative group overflow-hidden">
@@ -336,7 +336,7 @@ export function NavHeader() {
                     </Link>
                   </div>
                   <Link
-                    href="https://drive.google.com/file/d/13G_tasc6Hg5CMOTQj_CN0NFFKZUocl_O/view?usp=sharing"
+                    href="https://drive.google.com/file/d/1rXxSLUA6p7MXOI7t3I26iLBJObGDkof3/view?usp=sharing"
                     target="_blank"
                     className="block"
                   >
