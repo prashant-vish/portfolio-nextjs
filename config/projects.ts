@@ -62,4 +62,19 @@ export const projects: Project[] = [
     },
     color: "from-[#10B981] to-[#059669]",
   },
+  {
+    id: "pv-studios",
+    subtitle: "Video Streaming Platform",
+    title: "PV-Studios",
+    description:
+      "PV-Studios is a comprehensive YouTube clone application offering a seamless video streaming experience. The platform allows users to Search, view, and interact with videos through likes, comments, and subscriptions. With features like personalized recommendations, trending videos, and channel management, PV-Studios provides a familiar yet refined video content ecosystem. The application boasts responsive design, real-time notifications, and efficient video processing capabilities, making it suitable for content creators and viewers alike. Advanced search functionality and user authentication enhance the overall user experience, while analytics provide creators with valuable insights about their audience engagement.",
+    preview: "https://pv-studios.vercel.app/",
+    tech: ["React.js", "JavaScript", "Material UI", "Rapid API", "Vercel"],
+    links: {
+      website: "https://pv-studios.vercel.app/",
+      github: "https://github.com/prashant-vish/pv-studios",
+      video: "https://www.loom.com/share/51c385e8e0824ad598563f370c3d66a5?sid=3878d936-a677-4fc3-84b9-5e77dc363d8a",
+    },
+    color: "from-[#FF0000] to-[#CC0000]",
+  },
 ];
